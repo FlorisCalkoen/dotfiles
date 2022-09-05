@@ -1,0 +1,2 @@
+# avoid personal git configs being pushed to remote
+git/gitconfig.local.symlink

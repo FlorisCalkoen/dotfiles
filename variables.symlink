@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# add operating system type
+export OS=$(set_operating_system)

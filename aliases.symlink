@@ -1,0 +1,7 @@
+alias jn="jupyter-notebook"
+alias jl="jupyter-lab"
+alias setclip="xclip -selection c"
+alias getclip="xclip -selection c -o"
+alias ss="source ~/.zshrc"
+alias zshrc="vim ~/.zshrc"
+alias bshrc="vim ~/.bashrc"

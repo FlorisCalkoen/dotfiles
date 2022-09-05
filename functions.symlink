@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set_operating_system() {
+        if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+                echo "linux-gnu"
+        elif [[ "$OSTYPE" == "darwin"* ]]; then
+                echo "$(uname)-$(uname -m)"
+        else
+                echo "uknown"
+        fi
+}

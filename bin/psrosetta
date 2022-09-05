@@ -1,0 +1,3 @@
+#!/bin/bash
+# Command to check which processes are currently running on rosetta
+ps -p $(fuser /usr/libexec/rosetta/runtime | sed -e 's/.*: //' | sed -e 's/ /,/g')

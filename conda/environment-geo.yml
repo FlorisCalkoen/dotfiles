@@ -1,0 +1,37 @@
+channels:
+ - conda-forge
+ - nodefaults
+dependencies:
+ - python=3.10
+ - geopandas
+ - pygeos
+ - pyogrio
+ - dask
+ - distributed 
+ - dask-geopandas
+ - xarray
+ - netcdf4
+ - numpy
+ - pandas
+ - matplotlib
+ - folium
+ - mapclassify
+ - pyarrow
+ - rasterio
+ - rioxarray
+ - scikit-image
+ - scikit-learn
+ - scipy
+ - jupyterlab
+ - bandit
+ - jupyterlab_code_formatter
+ - isort
+ - black
+ - zarr
+ - h5py
+ - nb_black
+ - fiona
+ - geojson
+ - gcsfs
+ - pystac
+ - python-dotenv
