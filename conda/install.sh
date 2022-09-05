@@ -88,12 +88,20 @@ install_mamba() {
     fi
 }
 
-if [[ $OS == "linux-gpu" ]]; then
+if [[ $OSTYPE == "linux-gpu"* ]]; then
     install_miniconda_linux
-elif [[ $OS == "Darwin-arm64" ]]; then
-    install_miniconda_macos_arm64
-elif [[ $OS == "Darwin-x86_64" ]]; then
-    install_miniconda_macos_x86_64
+elif [[ $OSTYPE == "Darwin"* ]]; then
+
+    macos="$(uname)-$(uname -m)"
+
+    if [[ $macos == "Darwin-arm64" ]]; then
+        install_miniconda_macos_arm64
+    elif [[ $macos == "Darwin-x86_64" ]]; then
+        install_miniconda_macos_x86_64
+    else
+        echo "MacOS not recognized."
+    fi
+
 else
     echo "Conda install not configured for OS: $OSTYPE"
 fi
