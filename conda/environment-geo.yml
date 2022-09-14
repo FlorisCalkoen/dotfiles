@@ -41,6 +41,7 @@ dependencies:
   - geojson
   - gcsfs
   - pystac
+  - pystac-client
   - python-dotenv
   - tqdm
 # TODO: resolve pip error

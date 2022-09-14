@@ -1,8 +1,10 @@
+firefox
+skim
+spotify
 daisydisk
 google-chrome
 kap
 losslesscut
-microsoft-office
 rectangle
 skitch
 slack

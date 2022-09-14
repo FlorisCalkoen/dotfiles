@@ -30,6 +30,7 @@ dependencies:
   - geojson
   - gcsfs
   - pystac
+  - pystac-client
   - python-dotenv
   - datacube
   - google-cloud-storage
