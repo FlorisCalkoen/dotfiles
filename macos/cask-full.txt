@@ -9,3 +9,5 @@ skim
 spotify
 visual-studio-code
 zotero
+obsidian
+vmware-horizon-client
