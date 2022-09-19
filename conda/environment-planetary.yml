@@ -1,9 +1,6 @@
-name: geo
-
 channels:
   - conda-forge
   - nodefaults
-
 dependencies:
   - python=3.10
   - ipykernel
@@ -42,10 +39,13 @@ dependencies:
   - h5py
   - fiona
   - geojson
-  - gcsfs
   - pystac
   - pystac-client
   - python-dotenv
   - tqdm
+  - planetary-computer
   - hvplot
+  - adlfs
   - datashader
+# TODO: resolve pip error
+#  - pip3:

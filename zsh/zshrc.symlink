@@ -110,8 +110,8 @@ if [[ -f "$HOME/.variables" ]]; then source "$HOME/.variables"; fi
 if [[ -f "$HOME/.personal_variables" ]]; then source "$HOME/.personal_variables"; fi
 if [[ -f "$HOME/.deltares_variables" ]]; then source "$HOME/.deltares_variables"; fi
 
-# Add variables
-if [[ -f "$HOME/.aliases" ]]; then source "$HOME/.variables"; fi
+# Add aliases
+if [[ -f "$HOME/.aliases" ]]; then source "$HOME/.aliases"; fi
 if [[ -f "$HOME/.personal_aliases" ]]; then source "$HOME/.personal_aliases"; fi
 if [[ -f "$HOME/.deltares_aliases" ]]; then source "$HOME/.deltares_aliases"; fi
 
@@ -129,7 +129,7 @@ source ~/.iterm2_shell_integration.zsh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/calkoen/miniconda3/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
+__conda_setup="$('/Users/calkoen/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
@@ -145,3 +145,4 @@ if [ -f "/Users/calkoen/miniconda3/etc/profile.d/mamba.sh" ]; then
     . "/Users/calkoen/miniconda3/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
+#

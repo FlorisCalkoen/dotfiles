@@ -1,50 +1,40 @@
+name: ee
+
 channels:
   - conda-forge
-  - nodefaults
+
 dependencies:
   - python=3.10
-  - ipykernel
-  - nb_conda
-  - jupyterlab
-  - nodejs
-  - jupyterlab_code_formatter
-  - jupyterlab_vim # jupyterlab-contrib/jupyterlab-vim
-  - jupyterlab-git
-  - geopandas
-  - pygeos
-  - pyogrio
-  - dask
-  - dask-labextension
-  - xarray
-  - netcdf4
-  - numpy
-  - pandas
-  - matplotlib
-  - folium
-  - mapclassify
-  - pyarrow
-  - rasterio
-  - rioxarray
-  - scikit-image
-  - scikit-learn
-  - scipy
-  - bandit
-  - isort
-  - black
-  - zarr
-  - h5py
-  - fiona
-  - geojson
-  - gcsfs
-  - pystac
-  - python-dotenv
-  - earthengine-api
-  - geemap
-  - geojson
-  - tqdm
-  - google-cloud-storage
   - cartopy
   - contextily
-# TODO: resolve pip error
-#  - pip3:
-#     - jupyterlab_tabnine
+  - dask
+  - dask-labextension
+  - earthengine-api
+  - fiona
+  - folium
+  - gcsfs
+  - geemap
+  - geojson
+  - geopandas
+  - google-cloud-storage
+  - ipykernel
+  - jupyterlab
+  - jupyterlab-git
+  - jupyterlab_code_formatter
+  - jupyterlab_vim # jupyterlab-contrib/jupyterlab-vim
+  - matplotlib
+  - nb_conda
+  - netcdf4
+  - nodefaults
+  - numpy
+  - pandas
+  - pyarrow
+  - pygeos
+  - pyogrio
+  - pystac
+  - python-dotenv
+  - rasterio
+  - rioxarray
+  - tqdm
+  - xarray
+  - zarr
