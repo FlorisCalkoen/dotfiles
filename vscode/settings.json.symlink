@@ -1,0 +1,314 @@
+{
+    "telemetry.telemetryLevel": "off",
+    "window.restoreFullscreen": true,
+    "workbench.colorTheme": "Atom One Dark",
+    "files.autoSave": "onWindowChange",
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.foldfix": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "d"
+            ],
+            "after": [
+                "d",
+                "d"
+            ]
+        },
+        {
+            "before": [
+                "<C-n>"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        },
+    ],
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false
+    },
+    "editor.fontFamily": "Hack Nerd Font Mono",
+    "editor.fontSize": 13,
+    "editor.rulers": [
+        88,
+        100,
+    ],
+    "editor.insertSpaces": true,
+    // "terminal.integrated.fontFamily": "Source Code Pro for Powerline",
+    // @vtwang added (deprecated)
+    // "terminal.integrated.shell.osx": "/bin/zsh",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    // @jasonekratz added
+    // This fixed the glyph issues I was having with Inconsolata Nerd Font.
+    "terminal.integrated.gpuAcceleration": "canvas",
+    // @Drakal added
+    // I'd also consider adjusting line height if icons are cut off on top too or things look super cramped.
+    // "terminal.integrated.lineHeight": 1.3
+    // @ChongTang, @ramonsantos added
+    // @gaochundong said it works like a charm.
+    // "terminal.integrated.fontFamily": "Hack Nerd Font"
+    // @dalekurt added (belows which gives me the the fonts for the terminal and the icons from Nerd Font.)
+    // "terminal.integrated.fontFamily": "'Source Code Pro for Powerline', 'Hack Nerd Font'
+    // @nickhingston , @olivebay added for powerlevel10k
+    // I use powerline10k - which uses https://github.com/romkatv/powerlevel10k/#recommended-meslo-nerd-font-patched-for-powerlevel10k
+    // so this worked for me:
+    // "terminal.integrated.fontFamily": "MesloLGS NF" 
+    // @kaustuv added
+    // after the changing the font, still had some issues with the glyph spacing in the integrated terminal - fixed it with 
+    // @ar2zee : fixed the problem for me.
+    // (deprecated)
+    // "terminal.integrated.rendererType": "canvas"
+    "terminal.integrated.fontSize": 11,
+    "workbench.startupEditor": "none",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[javascript][javascriptreact][typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[json][jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[css][scss][less]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "python.linting.lintOnSave": true,
+    // "python.pipenvPath": "${env:HOME}/.local/bin/pipenv",
+    // "python.poetryPath": "${env:HOME}/.local/bin/poetry",
+    // "python.linting.enabled": true,
+    // "python.linting.banditPath": "${env:HOME}/.local/bin/bandit",
+    // "python.linting.banditEnabled": true,
+    // "python.linting.pylintPath": "${env:HOME}/.local/bin/pylint",
+    // "python.linting.mypyPath": "${env:HOME}/.local/bin/mypy",
+    // "python.linting.flake8Path": "${env:HOME}/.local/bin/flake8",
+    "python.formatting.blackPath": "/opt/homebrew/opt/black/bin/black",
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--line-length",
+        "88",
+        "--experimental-string-processing"
+    ],
+    "python.analysis.typeCheckingMode": "basic",
+    "[markdown]": {
+        "editor.wordWrap": "on",
+        "editor.suggestSelection": "recentlyUsedByPrefix",
+        "rewrap.wrappingColumn": 89,
+        "rewrap.autoWrap.enabled": true,
+    },
+    "[latex]": {
+        "editor.wordWrap": "on",
+        "editor.formatOnPaste": true,
+        "editor.suggestSelection": "recentlyUsedByPrefix",
+        "editor.formatOnSave": true,
+    },
+    "latex-workshop.latexindent.path": "/Library/TeX/texbin/latexindent",
+    "latex-workshop.view.pdf.viewer": "external",
+    "latex-workshop.view.pdf.external.viewer.command": "/opt/homebrew/bin/displayline",
+    "latex-workshop.view.pdf.external.viewer.args": [
+        "0",
+        "%PDF%"
+    ],
+    "latex-workshop.view.pdf.external.synctex.command": "/opt/homebrew/bin/displayline",
+    "latex-workshop.view.pdf.external.synctex.args": [
+        "-r",
+        "%LINE%",
+        "%PDF%",
+        "%TEX%"
+    ],
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.ist",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk",
+        "*.snm",
+        "*.nav"
+    ],
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.intellisense.package.enabled": false,
+    "latex-workshop.message.badbox.show": false,
+    "latex-workshop.latex.recipe.default": "lastUsed",
+    "editor.minimap.enabled": false,
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk 🔃",
+            "tools": [
+                "latexmk"
+            ]
+        },
+        {
+            "name": "lulatexmk 🔃",
+            "tools": [
+                "lualatexmk"
+            ]
+        },
+        {
+            "name": "xelatexmk 🔃",
+            "tools": [
+                "xelatexmk"
+            ]
+        },
+        {
+            "name": "platexmk 🔃",
+            "tools": [
+                "platexmk"
+            ]
+        },
+        {
+            "name": "pdflatex ➞ bibtex ➞ pdflatex`×2",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "xelatex ➞ biber ➞ xelatex",
+            "tools": [
+                "xelatex",
+                "biber",
+                "xelatex"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-shell-escape", // HERE
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "platexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "xelatexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-file-line-error",
+                "-xelatex",
+                "-outdir=%OUTDIR%",
+                "-interaction=nonstopmode",
+                "-halt-on-error",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "lualatexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-file-line-error",
+                "-lualatex",
+                "-outdir=%OUTDIR%",
+                "-interaction=nonstopmode",
+                "-halt-on-error",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-halt-on-error",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-halt-on-error",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "biber",
+            "command": "biber",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        }
+    ],
+    "autoDocstring.docstringFormat": "google",
+    "autoDocstring.generateDocstringOnEnter": true,
+    "jupyter.askForKernelRestart": false,
+    "[shellscript]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "git.autofetch": true,
+}

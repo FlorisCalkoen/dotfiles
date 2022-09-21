@@ -11,3 +11,5 @@ visual-studio-code
 zotero
 obsidian
 vmware-horizon-client
+visual-studio-code
+

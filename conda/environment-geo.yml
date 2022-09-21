@@ -49,3 +49,6 @@ dependencies:
   - tqdm
   - hvplot
   - datashader
+  - spatialpandas
+  - geoviews
+  - hvplot

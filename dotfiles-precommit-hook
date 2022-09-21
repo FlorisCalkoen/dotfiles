@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+cd "$(dirname "$0")"
+DOTFILES_ROOT=$(pwd -P)
+set -e
+
+if [[ "$PWD" = "$DOTFILES_ROOT" ]]; then
+    . "$DOTFILES_ROOT/vscode/save-code-extensions"
+fi

@@ -4,7 +4,7 @@
 
 cd "$(dirname "$0")"
 DOTFILES_ROOT=$(pwd -P)
-echo $DOTFILES_ROOT
+echo "$DOTFILES_ROOT"
 set -e
 
 echo ''
@@ -127,7 +127,7 @@ install_dotfiles() {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*'); do
+  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*' -not -path "$DOTFILES_ROOT/vscode/*"); do
     dst="$HOME/.$(basename "${src%.*}")"
     link_file "$src" "$dst"
   done
@@ -142,7 +142,7 @@ install_user_bin() {
   dst_dir="$HOME/bin"
 
   info "mkdir -p $dst_dir"
-  mkdir -p $dst_dir
+  mkdir -p "$dst_dir"
 
   info "Create symlinks and RUN chmod +x for all scripts in $dst_dir to make them executable."
 
@@ -160,29 +160,31 @@ install_awesome_vim() {
 
   info "installing awesome vim"
   dst="$HOME/.vim_runtime"
-  if [ ! -d $dst ]; then
+  if [ ! -d "$dst" ]; then
     git clone --depth=1 https://github.com/amix/vimrc.git $dst
   fi
   link_file "$DOTFILES_ROOT/vim/my_configs.vim" "$HOME/.vim_runtime/my_configs.vim"
   sh "$HOME/.vim_runtime/install_awesome_vimrc.sh"
 }
 
+configure_vscode_settings() {
+    if [[ $OSTYPE == "darwin"* ]]; then
+        if type code  &>/dev/null; then
+            src="$DOTFILES_ROOT/vscode/settings.json.symlink"
+            dst="$HOME/Library/Application Support/Code/User/settings.json"
+            link_file "$src" "$dst"
+
+        else
+            echo "Symlinking VSCode requires Code to be installed (use brew)."
+        fi
+    else
+        echo "Symlinking VSCode settings is only implemented for MacOS."
+    fi
+}
+
 setup_gitconfig
 install_dotfiles
 install_user_bin
 install_awesome_vim
+configure_vscode_settings
 
-# # If we're on a Mac, let's install and setup homebrew.
-# if [ "$(uname -s)" == "Darwin" ]
-# then
-#   info "installing dependencies"
-#   if source bin/dot | while read -r data; do info "$data"; done
-#   then
-#     success "dependencies installed"
-#   else
-#     fail "error installing dependencies"
-#   fi
-# fi
-
-# echo ''
-# echo '  All installed!'
