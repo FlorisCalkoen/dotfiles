@@ -88,7 +88,7 @@ install_mamba() {
     fi
 }
 
-if [[ $OSTYPE == "linux-gpu"* ]]; then
+if [[ $OSTYPE == "linux-gnu"* ]]; then
     install_miniconda_linux
 elif [[ $OSTYPE == "Darwin"* ]]; then
 

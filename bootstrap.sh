@@ -167,6 +167,8 @@ install_awesome_vim() {
   sh "$HOME/.vim_runtime/install_awesome_vimrc.sh"
 }
 
+# TODO: include extension installation from list of extensions in vscode/code_extensions
+# method: sort extension file, list current extensions with code --list-extensions and install missing extensions with code --install-extension ext
 configure_vscode_settings() {
     if [[ $OSTYPE == "darwin"* ]]; then
         if type code  &>/dev/null; then
