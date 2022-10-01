@@ -44,8 +44,10 @@ dependencies:
   - python-dotenv
   - tqdm
   - planetary-computer
-  - hvplot
   - adlfs
+  - hvplot
   - datashader
+  - geoviews
+  - spatialpandas
 # TODO: resolve pip error
 #  - pip3:

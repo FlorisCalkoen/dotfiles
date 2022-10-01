@@ -47,7 +47,6 @@ dependencies:
   - pystac-client
   - python-dotenv
   - tqdm
-  - hvplot
   - datashader
   - spatialpandas
   - geoviews
