@@ -100,3 +100,6 @@ alias reload="exec ${SHELL} -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+# Fast commit
+alias gmcrap="git commit -m 'update without proper commit message'"

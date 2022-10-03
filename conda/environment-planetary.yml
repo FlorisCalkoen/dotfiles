@@ -10,6 +10,7 @@ dependencies:
   - jupyterlab_code_formatter
   - jupyterlab_vim # jupyterlab-contrib/jupyterlab-vim
   - jupyterlab-git
+  - ipywidgets
   - geopandas
   - pygeos
   - pyogrio

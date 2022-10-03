@@ -18,6 +18,7 @@ dependencies:
   - geopandas
   - google-cloud-storage
   - ipykernel
+  - ipywidgets
   - jupyterlab
   - jupyterlab-git
   - jupyterlab_code_formatter
