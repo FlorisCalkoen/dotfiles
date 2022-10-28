@@ -36,6 +36,7 @@ dependencies:
   - google-cloud-storage
   - jupyterlab_vim
   - tqdm
+
 # TODO: resolve pip error
 #  - pip3:
 #     - jupyterlab_tabnine

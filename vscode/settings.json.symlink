@@ -123,7 +123,8 @@
         "editor.suggestSelection": "recentlyUsedByPrefix",
         "editor.formatOnSave": true,
     },
-    "latex-workshop.latexindent.path": "/Library/TeX/texbin/latexindent",
+    // "latex-workshop.latexindent.path": "/Library/TeX/texbin/latexindent",
+    "latex-workshop.latexindent.path": "/opt/homebrew/bin/latexindent",
     "latex-workshop.view.pdf.viewer": "external",
     "latex-workshop.view.pdf.external.viewer.command": "/opt/homebrew/bin/displayline",
     "latex-workshop.view.pdf.external.viewer.args": [
@@ -311,4 +312,5 @@
         "editor.defaultFormatter": "foxundermoon.shell-format"
     },
     "git.autofetch": true,
+    "git.confirmSync": false,
 }

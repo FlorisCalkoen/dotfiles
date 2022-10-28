@@ -27,3 +27,4 @@ vim
 wget
 yarn
 cpanminus
+unar

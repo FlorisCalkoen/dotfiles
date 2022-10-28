@@ -45,4 +45,4 @@ dependencies:
   - pytorch 
   - torchvision
   - wandb
-  - torchaudio
+  - torchgeo
