@@ -10,7 +10,9 @@ dependencies:
   - ipywidgets
   - nb_conda
   - jupyterlab
+  - nodejs
   - dask-labextension
+  - dask_labextension
   - jupyterlab_code_formatter
   - jupyterlab_vim # jupyterlab-contrib/jupyterlab-vim
   - jupyterlab-git
