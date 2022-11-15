@@ -12,5 +12,6 @@ zotero
 obsidian
 vmware-horizon-client
 visual-studio-code
-brew install --cask microsoft-teams
+microsoft-teams
+zoom
 

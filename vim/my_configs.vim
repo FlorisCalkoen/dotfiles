@@ -8,3 +8,6 @@ augroup symlink_ft
   au!
   autocmd BufNewFile,BufRead *.symlink set syntax=sh
 augroup END
+
+" global clipboard
+set clipboard=unnamed
