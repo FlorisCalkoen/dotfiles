@@ -103,3 +103,4 @@ dependencies:
  - zarr
  - gh-scoped-creds
  - jupyterlab-git
+ - stackstac

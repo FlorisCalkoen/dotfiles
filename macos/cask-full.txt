@@ -14,4 +14,5 @@ vmware-horizon-client
 visual-studio-code
 microsoft-teams
 zoom
+adobe-acrobat-reader
 

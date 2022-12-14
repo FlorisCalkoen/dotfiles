@@ -1,21 +1,16 @@
-name: geo
-
 channels:
   - conda-forge
   - nodefaults
-
 dependencies:
   - python=3.10
   - ipykernel
-  - ipywidgets
   - nb_conda
   - jupyterlab
-  - nodejs
   - dask-labextension
-  - dask_labextension
   - jupyterlab_code_formatter
   - jupyterlab_vim # jupyterlab-contrib/jupyterlab-vim
   - jupyterlab-git
+  - ipywidgets
   - geopandas
   - pygeos
   - pyogrio
@@ -45,15 +40,14 @@ dependencies:
   - h5py
   - fiona
   - geojson
-  - gcsfs
   - pystac
   - pystac-client
-  - pydantic
   - python-dotenv
   - tqdm
-  - datashader
-  - spatialpandas
-  - geoviews
+  - planetary-computer
+  - adlfs
   - hvplot
-  - stackstac
-  
+  - datashader
+  - geoviews
+  - spatialpandas
+  - astropy
