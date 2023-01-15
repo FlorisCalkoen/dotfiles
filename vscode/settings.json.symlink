@@ -122,6 +122,7 @@
         "editor.formatOnPaste": true,
         "editor.suggestSelection": "recentlyUsedByPrefix",
         "editor.formatOnSave": true,
+        "rewrap.wrappingColumn": 88,
     },
     // "latex-workshop.latexindent.path": "/Library/TeX/texbin/latexindent",
     "latex-workshop.latexindent.path": "/opt/homebrew/bin/latexindent",
@@ -313,4 +314,7 @@
     },
     "git.autofetch": true,
     "git.confirmSync": false,
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
 }

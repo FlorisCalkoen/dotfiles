@@ -13,3 +13,13 @@
         editor = vim
 [init]
 	defaultBranch = main
+[http]
+	sslVerify = false
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[alias]
+  squash-all = "!f(){ git reset $(git commit-tree HEAD^{tree} \"$@\");};f"
