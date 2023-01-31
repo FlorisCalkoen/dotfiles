@@ -1,0 +1,31 @@
+name: lab
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - mamba==1.0.0
+  - conda
+  - pip
+  - ca-certificates
+  - certifi
+  - openssl
+  - jupyterlab
+  - nodejs
+  - nb_conda_kernels
+  - ipykernel
+  # - ipywidgets  # jupyterlab_widgets here and ipywidgets in project env
+  - ipyleaflet
+  - voila
+  - jupyterlab_code_formatter
+  - jupyterlab_vim
+  - jupyterlab_widgets
+  - jupyter-resource-usage
+  - jupyterlab-lsp
+  - jupyterlab-git
+  - jupyterlab_execute_time
+  - dask-labextension
+  - jupyterlab-spellchecker
+  # - lckr-jupyterlab-variableinspector
+  - black
+  - isort

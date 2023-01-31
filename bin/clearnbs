@@ -1,0 +1,3 @@
+#!/bin/bash
+# Command to check which processes are currently running on rosetta
+jupyter nbconvert --clear-output --inplace $1/*.ipynb

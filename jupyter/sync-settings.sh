@@ -15,3 +15,12 @@ else
     echo "Cannot find user settings, $SRC does not exist."
 fi
 
+SRC="$HOME/.jupyter/jupyter_config.json"
+DST="$DOTFILES_ROOT/jupyter/jupyter_config.json"
+
+if [[ -f "$SRC" ]];then
+    rsync -a "$SRC" "$DST" --delete
+    echo "sync $SRC with $DST"
+else
+    echo "Cannot find user settings, $SRC does not exist."
+fi

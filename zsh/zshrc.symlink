@@ -138,6 +138,7 @@ source ~/.iterm2_shell_integration.zsh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/calkoen/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
