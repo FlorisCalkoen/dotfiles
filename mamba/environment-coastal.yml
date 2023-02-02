@@ -3,11 +3,11 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.*
+  - python=3.10
   - pip>=20
   - ipykernel
-  - ipywidgets #  ipywidgets here and jupyterlab_widgets in jupyterlab env
-  - ipyleaflet
+  # - ipywidgets #  ipywidgets here and jupyterlab_widgets in jupyterlab env
+  # - ipyleaflet  # not sure if these have to be installed in both base and project env
   - adlfs
   - awscli
   - azure-data-tables
@@ -41,7 +41,7 @@ dependencies:
   - intake-xarray
   - matplotlib
   - numpy
-  - panel
+  - pyviz::panel
   - pandas
   - planetary-computer
   - pyarrow
@@ -74,3 +74,4 @@ dependencies:
   - lxml
   - pooch
   - tqdm
+  # - jupyter_server>=2.2.0 # lower jupyter_server break dask distributed https://github.com/dask/distributed/issues/7515
