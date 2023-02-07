@@ -6,21 +6,24 @@ dependencies:
   - python=3.10
   - pip>=20
   - ipykernel
-  # - ipywidgets #  ipywidgets here and jupyterlab_widgets in jupyterlab env
-  # - ipyleaflet  # not sure if these have to be installed in both base and project env
+  - ipywidgets #  ipywidgets here and jupyterlab_widgets in jupyterlab env
+  - ipyleaflet # not sure if these have to be installed in both base and project env
   - adlfs
   - awscli
   - azure-data-tables
   - boto3
   - cartopy
   - cfgrib
+  # - click <8.0.4 # was proposed as solution for dask distributed error, but didnt work
   - click
   - dask-cloudprovider
   - azure-identity
-  - dask==2022.11.1 # until https://github.com/geopandas/dask-geopandas/pull/230 is merged
+  - dask
+  # - dask==2022.11.1 # https://github.com/geopandas/dask-geopandas/pull/230 is merged, test if this now works
   - distributed
   - dask-geopandas
   - dask-ml
+  - dask-gateway
   - datacube
   - datashader
   - descartes
@@ -30,7 +33,7 @@ dependencies:
   - fsspec
   - gcsfs
   - geopandas>=0.11.0
-  - geoviews
+  - geoviews-core
   - h5netcdf
   - h5py
   - holoviews
@@ -38,13 +41,15 @@ dependencies:
   - intake
   - intake-esm
   - intake-geopandas
+  - intake-stac
   - intake-xarray
-  - matplotlib
+  - matplotlib-base
   - numpy
   - pyviz::panel
+  - param
   - pandas
   - planetary-computer
-  - pyarrow
+  - pyarrow=10
   - pyogrio
   - scikit-image
   - scikit-learn
@@ -54,6 +59,7 @@ dependencies:
   - stac-geoparquet
   - stackstac
   - zarr
+  - numcodecs
   - s3fs
   - rasterio
   - mapclassify
