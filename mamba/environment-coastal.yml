@@ -5,21 +5,19 @@ channels:
 dependencies:
   - python=3.10
   - pip>=20
-  - ipykernel
+  - ipykernel <6.21 # until https://github.com/dask/distributed/issues/7515 is solved
   - ipywidgets #  ipywidgets here and jupyterlab_widgets in jupyterlab env
-  - ipyleaflet # not sure if these have to be installed in both base and project env
+  - ipyleaflet
   - adlfs
   - awscli
   - azure-data-tables
   - boto3
   - cartopy
   - cfgrib
-  # - click <8.0.4 # was proposed as solution for dask distributed error, but didnt work
   - click
   - dask-cloudprovider
   - azure-identity
   - dask
-  # - dask==2022.11.1 # https://github.com/geopandas/dask-geopandas/pull/230 is merged, test if this now works
   - distributed
   - dask-geopandas
   - dask-ml
@@ -49,7 +47,7 @@ dependencies:
   - param
   - pandas
   - planetary-computer
-  - pyarrow=10
+  - pyarrow=10 # check if higher versions still bring cudatoolkit
   - pyogrio
   - scikit-image
   - scikit-learn
@@ -80,4 +78,3 @@ dependencies:
   - lxml
   - pooch
   - tqdm
-  # - jupyter_server>=2.2.0 # lower jupyter_server break dask distributed https://github.com/dask/distributed/issues/7515

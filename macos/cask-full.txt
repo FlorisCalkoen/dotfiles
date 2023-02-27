@@ -15,4 +15,5 @@ visual-studio-code
 microsoft-teams
 zoom
 adobe-acrobat-reader
+clickshare
 
