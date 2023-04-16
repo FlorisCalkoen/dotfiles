@@ -317,4 +317,6 @@
     "[dockerfile]": {
         "editor.defaultFormatter": "ms-azuretools.vscode-docker"
     },
+    "editor.largeFileOptimizations": false,
+    "window.zoomLevel": -1,
 }

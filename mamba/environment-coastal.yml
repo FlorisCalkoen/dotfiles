@@ -78,3 +78,6 @@ dependencies:
   - lxml
   - pooch
   - tqdm
+  - h3
+  - pyyaml
+  - contextily
