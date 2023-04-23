@@ -30,3 +30,4 @@ cpanminus
 unar
 pdftk-java
 speedtest-cli
+ffmpeg
