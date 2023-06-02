@@ -95,6 +95,7 @@
         "editor.defaultFormatter": "vscode.css-language-features"
     },
     "python.linting.lintOnSave": true,
+    "python.languageServer": "Pylance"
     // "python.pipenvPath": "${env:HOME}/.local/bin/pipenv",
     // "python.poetryPath": "${env:HOME}/.local/bin/poetry",
     // "python.linting.enabled": true,
@@ -318,5 +319,5 @@
         "editor.defaultFormatter": "ms-azuretools.vscode-docker"
     },
     "editor.largeFileOptimizations": false,
-    "window.zoomLevel": -1,
+    "editor.inlineSuggest.enabled": true,
 }

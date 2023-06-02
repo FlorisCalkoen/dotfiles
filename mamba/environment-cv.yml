@@ -1,0 +1,10 @@
+pytorch
+torchvision
+opencv
+xarray
+rioxarray
+dask
+distributed
+pandas
+geopandas
+

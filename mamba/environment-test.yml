@@ -1,11 +1,11 @@
-name: torch
+name: testenv
 channels:
   - conda-forge
-  - nodefaults
+  - defaults
 dependencies:
   - python=3.*
   - pip>=20
-  - ipykernel
+  - ipykernel # <6.21 # until https://github.com/dask/distributed/issues/7515 is solved
   - ipywidgets #  ipywidgets here and jupyterlab_widgets in jupyterlab env
   - ipyleaflet
   - adlfs
@@ -18,10 +18,10 @@ dependencies:
   - dask-cloudprovider
   - azure-identity
   - dask
-  # - dask==2022.11.1 # until https://github.com/geopandas/dask-geopandas/pull/230 is merged
   - distributed
   - dask-geopandas
   - dask-ml
+  - dask-gateway
   - datacube
   - datashader
   - descartes
@@ -31,7 +31,7 @@ dependencies:
   - fsspec
   - gcsfs
   - geopandas>=0.11.0
-  - geoviews
+  - geoviews-core
   - h5netcdf
   - h5py
   - holoviews
@@ -39,13 +39,15 @@ dependencies:
   - intake
   - intake-esm
   - intake-geopandas
+  - intake-stac
   - intake-xarray
-  - matplotlib
+  - matplotlib-base
   - numpy
-  - panel
+  - pyviz::panel
+  - param
   - pandas
   - planetary-computer
-  - pyarrow
+  - pyarrow # =10 # check if higher versions still bring cudatoolkit
   - pyogrio
   - scikit-image
   - scikit-learn
@@ -55,6 +57,7 @@ dependencies:
   - stac-geoparquet
   - stackstac
   - zarr
+  - numcodecs
   - s3fs
   - rasterio
   - mapclassify
@@ -67,13 +70,16 @@ dependencies:
   - fiona
   - geojson
   - spatialpandas
+  - astropy
   - python-dotenv
   - pydantic
+  - xarray-spatial
+  - beautifulsoup4
+  - lxml
   - pooch
   - tqdm
+  - h3
+  - pyyaml
+  - contextily
+  - tabulate  # pprint for markdown tables 
   - opencv
-  - pytorch
-  - torchvision
-  - pytorch-lightning
-  - wandb
-  - torchgeo

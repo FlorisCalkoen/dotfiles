@@ -81,3 +81,5 @@ dependencies:
   - h3
   - pyyaml
   - contextily
+  - tabulate  # pprint for markdown tables 
+  - opencv
