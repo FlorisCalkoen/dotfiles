@@ -1,9 +1,9 @@
-name: testenv
+name: testenv2
 channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.*
+  - python=3.
   - pip>=20
   - ipykernel # <6.21 # until https://github.com/dask/distributed/issues/7515 is solved
   - ipywidgets #  ipywidgets here and jupyterlab_widgets in jupyterlab env
@@ -17,9 +17,9 @@ dependencies:
   - click
   - dask-cloudprovider
   - azure-identity
-  - dask
-  - distributed
-  - dask-geopandas
+  - dask=2023.2.0
+  - distributed=2023.2.0
+  - dask-geopandas #<0.3.1
   - dask-ml
   - dask-gateway
   - datacube
@@ -47,7 +47,7 @@ dependencies:
   - param
   - pandas
   - planetary-computer
-  - pyarrow # =10 # check if higher versions still bring cudatoolkit
+  - pyarrow #=10 # check if higher versions still bring cudatoolkit
   - pyogrio
   - scikit-image
   - scikit-learn
@@ -81,5 +81,5 @@ dependencies:
   - h3
   - pyyaml
   - contextily
-  - tabulate  # pprint for markdown tables 
+  - tabulate # pprint for markdown tables
   - opencv
