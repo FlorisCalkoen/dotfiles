@@ -17,9 +17,9 @@ dependencies:
   - click
   - dask-cloudprovider
   - azure-identity
-  - dask=2023.2.0
-  - distributed=2023.2.0
-  - dask-geopandas #<0.3.1
+  - dask=2023.2.0 # until this is fixed https://stackoverflow.com/questions/75621940/dask-distributed-problem-shuffle-transfer-failed-during-shuffle
+  - distributed=2023.2.0 # until this is fixed https://stackoverflow.com/questions/75621940/dask-distributed-problem-shuffle-transfer-failed-during-shuffle
+  - dask-geopandas
   - dask-ml
   - dask-gateway
   - datacube
@@ -47,7 +47,7 @@ dependencies:
   - param
   - pandas
   - planetary-computer
-  - pyarrow #=10 # check if higher versions still bring cudatoolkit
+  - pyarrow #=10 # check if higher versions still bring cudatoolkit - first test seems OK.
   - pyogrio
   - scikit-image
   - scikit-learn
