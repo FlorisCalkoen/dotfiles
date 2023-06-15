@@ -1,4 +1,4 @@
-name: testenv2
+name: testenv
 channels:
   - conda-forge
   - defaults
@@ -43,11 +43,11 @@ dependencies:
   - intake-xarray
   - matplotlib-base
   - numpy
-  - pyviz::panel
+  - panel
   - param
   - pandas
   - planetary-computer
-  - pyarrow #=10 # check if higher versions still bring cudatoolkit - first test seems OK.
+  - pyarrow=11 # 12 causes issues when doing dask_geopandas spatial shuffles
   - pyogrio
   - scikit-image
   - scikit-learn
@@ -83,3 +83,4 @@ dependencies:
   - contextily
   - tabulate # pprint for markdown tables
   - opencv
+  - geodatasets
