@@ -89,7 +89,8 @@
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
     "[json][jsonc]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
+        "editor.defaultFormatter": "vscode.json-language-features",
+        "editor.formatOnType": true,
     },
     "[css][scss][less]": {
         "editor.defaultFormatter": "vscode.css-language-features"
