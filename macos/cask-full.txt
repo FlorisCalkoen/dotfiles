@@ -16,4 +16,5 @@ microsoft-teams
 zoom
 adobe-acrobat-reader
 clickshare
+microsoft-edge
 
