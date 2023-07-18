@@ -3,9 +3,9 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.10
+  - python=3.
   - pip>=20
-  - ipykernel <6.21 # until https://github.com/dask/distributed/issues/7515 is solved
+  - ipykernel # <6.21 # until https://github.com/dask/distributed/issues/7515 is solved
   - ipywidgets #  ipywidgets here and jupyterlab_widgets in jupyterlab env
   - ipyleaflet
   - adlfs
@@ -17,8 +17,8 @@ dependencies:
   - click
   - dask-cloudprovider
   - azure-identity
-  - dask
-  - distributed
+  - dask=2023.2.0 # until this is fixed https://stackoverflow.com/questions/75621940/dask-distributed-problem-shuffle-transfer-failed-during-shuffle
+  - distributed=2023.2.0 # until this is fixed https://stackoverflow.com/questions/75621940/dask-distributed-problem-shuffle-transfer-failed-during-shuffle
   - dask-geopandas
   - dask-ml
   - dask-gateway
@@ -43,11 +43,11 @@ dependencies:
   - intake-xarray
   - matplotlib-base
   - numpy
-  - pyviz::panel
+  - panel
   - param
   - pandas
   - planetary-computer
-  - pyarrow=10 # check if higher versions still bring cudatoolkit
+  - pyarrow=11 # 12 causes issues when doing dask_geopandas spatial shuffles
   - pyogrio
   - scikit-image
   - scikit-learn
@@ -81,6 +81,7 @@ dependencies:
   - h3
   - pyyaml
   - contextily
-  - tabulate  # pprint for markdown tables 
+  - tabulate # pprint for markdown tables
   - opencv
   - geodatasets
+  - python-graphviz
