@@ -3,37 +3,37 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.10
-  - mamba==1.0.0
-  - conda
+  - python=3.*
   - pip
+  - black
   - ca-certificates
   - certifi
-  - openssl
-  - jupyterlab
-  - nodejs
-  - pyviz::panel # needs to be in base to connect to widgets, not sure iff it has to be from pyviz channel
-  - nb_conda_kernels
+  - dask-labextension
+  - gh-scoped-creds # check if useful
+  - ghp-import
   - ipykernel
-  # - ipywidgets # jupyterlab_widgets here and ipywidgets in project env
   - ipyleaflet
-  - voila
+  - isort
+  - jupyter-book
+  - jupyter-panel-proxy # not sure if this one is really useful
+  - jupyter-resource-usage
+  - jupyterlab
   - jupyterlab_code_formatter
+  - jupyterlab_execute_time # breaks env on windows installation
   - jupyterlab_vim
   - jupyterlab_widgets
-  - jupyter-resource-usage
-  - jupyter-panel-proxy # not sure if this one is really useful
-  - jupyterlab-lsp # breaks tab complete if python-lsp-server not installed
-  - python-lsp-server
   - jupyterlab-git
-  - jupyterlab_execute_time # breaks env on windows installation
-  - dask-labextension
+  - jupyterlab-lsp # breaks tab complete if python-lsp-server not installed
   - jupyterlab-spellchecker
+  - poetry
+  - pre_commit
+  - nb_conda_kernels
   - nbgitpuller
-  # - lckr-jupyterlab-variableinspector  # doesn't work on my machine yet
-  - black
-  - isort
-  - gh-scoped-creds # check if useful
   - nbstripout
-  # - jupyter-book
-  # - ghp-import
+  - nodejs
+  - openssl
+  - panel
+  - python-lsp-server
+  - pyviz_comms
+  - voila
+  - xeus-python

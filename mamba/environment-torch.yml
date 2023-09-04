@@ -11,28 +11,32 @@ dependencies:
   - adlfs
   - awscli
   - azure-data-tables
+  - azure-identity
+  - bandit
+  - black
   - boto3
   - cartopy
   - cfgrib
   - click
-  - dask-cloudprovider
-  - azure-identity
   - dask
-  # - dask==2022.11.1 # until https://github.com/geopandas/dask-geopandas/pull/230 is merged
-  - distributed
+  - dask-cloudprovider
   - dask-geopandas
   - dask-ml
   - datacube
   - datashader
   - descartes
-  - eccodes>=2.24.2
+  - distributed
   - earthengine-api
+  - eccodes>=2.24.2
+  - fiona
   - folium
   - fsspec
   - gcsfs
+  - geojson
   - geopandas>=0.11.0
   - geoviews
   - h5netcdf
+  - h5py
   - h5py
   - holoviews
   - hvplot
@@ -40,40 +44,39 @@ dependencies:
   - intake-esm
   - intake-geopandas
   - intake-xarray
+  - isort
+  - mapclassify
   - matplotlib
   - numpy
-  - panel
+  - opencv
   - pandas
+  - panel
   - planetary-computer
+  - pooch
   - pyarrow
+  - pydantic
   - pyogrio
+  - python-dotenv
+  - pytorch
+  - pytorch-lightning
+  - rasterio
+  - rioxarray
+  - s3fs
   - scikit-image
   - scikit-learn
   - scipy
   - seaborn
-  - stac-vrt
-  - stac-geoparquet
-  - stackstac
-  - zarr
-  - s3fs
-  - rasterio
-  - mapclassify
-  - rioxarray
-  - bandit
-  - isort
-  - black
-  - zarr
-  - h5py
-  - fiona
-  - geojson
   - spatialpandas
-  - python-dotenv
-  - pydantic
-  - pooch
-  - tqdm
-  - opencv
-  - pytorch
-  - torchvision
-  - pytorch-lightning
-  - wandb
+  - stac-geoparquet
+  - stac-vrt
+  - stackstac
   - torchgeo
+  - torchvision
+  - tqdm
+  - wandb
+  - zarr
+  - pystac
+  - pytest
+  - pytest-cov
+  - xarray
+  - geoviews-core

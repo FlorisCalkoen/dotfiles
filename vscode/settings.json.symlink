@@ -1,14 +1,42 @@
 {
+    // General Settings
     "telemetry.telemetryLevel": "off",
     "window.restoreFullscreen": true,
     "workbench.colorTheme": "Atom One Dark",
     "files.autoSave": "onWindowChange",
+    "workbench.startupEditor": "none",
+    "editor.minimap.enabled": false,
+    "editor.largeFileOptimizations": false,
+    "editor.inlineSuggest.enabled": true,
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    // Editor and Terminal
+    "editor.fontFamily": "Hack Nerd Font Mono",
+    "editor.fontSize": 13,
+    "editor.insertSpaces": true,
+    "editor.rulers": [
+        88,
+        100
+    ],
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.gpuAcceleration": "canvas",
+    "terminal.integrated.fontSize": 11,
+    // Vim Settings
     "vim.easymotion": true,
     "vim.incsearch": true,
     "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": true,
     "vim.hlsearch": true,
     "vim.foldfix": true,
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false
+    },
     "vim.insertModeKeyBindings": [
         {
             "before": [
@@ -38,50 +66,27 @@
             "commands": [
                 ":nohl"
             ]
-        },
+        }
     ],
-    "vim.leader": "<space>",
-    "vim.handleKeys": {
-        "<C-a>": false,
-        "<C-f>": false
-    },
-    "editor.fontFamily": "Hack Nerd Font Mono",
-    "editor.fontSize": 13,
-    "editor.rulers": [
-        88,
-        100,
+    // Python & Jupyter Settings
+    "python.languageServer": "Pylance",
+    "python.defaultInterpreterPath": "/Users/calkoen/mambaforge/envs/testenv/bin/python",
+    "python.analysis.typeCheckingMode": "basic",
+    "black-formatter.args": [
+        "--experimental-string-processing"
     ],
-    "editor.insertSpaces": true,
-    // "terminal.integrated.fontFamily": "Source Code Pro for Powerline",
-    // @vtwang added (deprecated)
-    // "terminal.integrated.shell.osx": "/bin/zsh",
-    "terminal.integrated.defaultProfile.osx": "zsh",
-    // @jasonekratz added
-    // This fixed the glyph issues I was having with Inconsolata Nerd Font.
-    "terminal.integrated.gpuAcceleration": "canvas",
-    // @Drakal added
-    // I'd also consider adjusting line height if icons are cut off on top too or things look super cramped.
-    // "terminal.integrated.lineHeight": 1.3
-    // @ChongTang, @ramonsantos added
-    // @gaochundong said it works like a charm.
-    // "terminal.integrated.fontFamily": "Hack Nerd Font"
-    // @dalekurt added (belows which gives me the the fonts for the terminal and the icons from Nerd Font.)
-    // "terminal.integrated.fontFamily": "'Source Code Pro for Powerline', 'Hack Nerd Font'
-    // @nickhingston , @olivebay added for powerlevel10k
-    // I use powerline10k - which uses https://github.com/romkatv/powerlevel10k/#recommended-meslo-nerd-font-patched-for-powerlevel10k
-    // so this worked for me:
-    // "terminal.integrated.fontFamily": "MesloLGS NF" 
-    // @kaustuv added
-    // after the changing the font, still had some issues with the glyph spacing in the integrated terminal - fixed it with 
-    // @ar2zee : fixed the problem for me.
-    // (deprecated)
-    // "terminal.integrated.rendererType": "canvas"
-    "terminal.integrated.fontSize": 11,
-    "workbench.startupEditor": "none",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-        "source.organizeImports": true
-    },
+    "isort.args": [
+        "--profile",
+        "black"
+    ],
+    "jupyter.askForKernelRestart": false,
+    "jupyter.widgetScriptSources": [
+        "jsdelivr.com",
+        "unpkg.com"
+    ],
+    "autoDocstring.docstringFormat": "google",
+    "autoDocstring.generateDocstringOnEnter": true,
+    // File Type Specific Settings
     "[html]": {
         "editor.defaultFormatter": "vscode.html-language-features"
     },
@@ -90,43 +95,40 @@
     },
     "[json][jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features",
-        "editor.formatOnType": true,
+        "editor.formatOnType": true
     },
     "[css][scss][less]": {
         "editor.defaultFormatter": "vscode.css-language-features"
     },
-    "python.linting.lintOnSave": true,
-    "python.languageServer": "Pylance"
-    // "python.pipenvPath": "${env:HOME}/.local/bin/pipenv",
-    // "python.poetryPath": "${env:HOME}/.local/bin/poetry",
-    // "python.linting.enabled": true,
-    // "python.linting.banditPath": "${env:HOME}/.local/bin/bandit",
-    // "python.linting.banditEnabled": true,
-    // "python.linting.pylintPath": "${env:HOME}/.local/bin/pylint",
-    // "python.linting.mypyPath": "${env:HOME}/.local/bin/mypy",
-    // "python.linting.flake8Path": "${env:HOME}/.local/bin/flake8",
-    "python.formatting.blackPath": "/opt/homebrew/opt/black/bin/black",
-    "python.formatting.provider": "black",
-    "python.formatting.blackArgs": [
-        "--line-length",
-        "88",
-        "--experimental-string-processing"
-    ],
-    "python.analysis.typeCheckingMode": "basic",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll": true,
+            "source.organizeImports": true
+        }
+    },
     "[markdown]": {
         "editor.wordWrap": "on",
         "editor.suggestSelection": "recentlyUsedByPrefix",
         "rewrap.wrappingColumn": 89,
-        "rewrap.autoWrap.enabled": true,
+        "rewrap.autoWrap.enabled": true
     },
     "[latex]": {
         "editor.wordWrap": "on",
         "editor.formatOnPaste": true,
-        "editor.suggestSelection": "recentlyUsedByPrefix",
         "editor.formatOnSave": true,
-        "rewrap.wrappingColumn": 88,
+        "editor.suggestSelection": "recentlyUsedByPrefix",
+        "rewrap.wrappingColumn": 88
     },
-    // "latex-workshop.latexindent.path": "/Library/TeX/texbin/latexindent",
+    "[shellscript]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
+    // Latex Workshop Settings
     "latex-workshop.latexindent.path": "/opt/homebrew/bin/latexindent",
     "latex-workshop.view.pdf.viewer": "external",
     "latex-workshop.view.pdf.external.viewer.command": "/opt/homebrew/bin/displayline",
@@ -168,7 +170,6 @@
     "latex-workshop.intellisense.package.enabled": false,
     "latex-workshop.message.badbox.show": false,
     "latex-workshop.latex.recipe.default": "lastUsed",
-    "editor.minimap.enabled": false,
     "latex-workshop.latex.recipes": [
         {
             "name": "latexmk 🔃",
@@ -308,17 +309,9 @@
             "env": {}
         }
     ],
-    "autoDocstring.docstringFormat": "google",
-    "autoDocstring.generateDocstringOnEnter": true,
-    "jupyter.askForKernelRestart": false,
-    "[shellscript]": {
-        "editor.defaultFormatter": "foxundermoon.shell-format"
-    },
-    "git.autofetch": true,
-    "git.confirmSync": false,
-    "[dockerfile]": {
-        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-    },
-    "editor.largeFileOptimizations": false,
-    "editor.inlineSuggest.enabled": true,
+    // EasyCode Settings
+    // "easycode.model": "gpt-4",
+    // "easycode.useOwnApiKey": true,
+    // "easycode.openAI ApiKey": "",
+    // "easycode.userEmail": "",
 }
