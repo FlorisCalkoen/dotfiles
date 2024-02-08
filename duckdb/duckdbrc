@@ -1,0 +1,6 @@
+.timer on
+.width 180
+LOAD json;
+LOAD parquet;
+LOAD spatial;
+
