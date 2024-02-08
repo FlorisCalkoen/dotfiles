@@ -1,7 +1,7 @@
 name: torch
 channels:
   - conda-forge
-  - nodefaults
+  - defaults
 dependencies:
   - python=3.*
   - pip>=20
@@ -9,74 +9,119 @@ dependencies:
   - ipywidgets #  ipywidgets here and jupyterlab_widgets in jupyterlab env
   - ipyleaflet
   - adlfs
+  - astropy
   - awscli
   - azure-data-tables
   - azure-identity
   - bandit
+  - beautifulsoup4
   - black
+  - boltons
   - boto3
   - cartopy
+  - cattrs
   - cfgrib
+  - ciso8601
   - click
+  - codespell
+  - contextily
   - dask
   - dask-cloudprovider
+  - dask-gateway
   - dask-geopandas
+  - dask-image
   - dask-ml
   - datacube
   - datashader
+  - defusedxml
   - descartes
   - distributed
   - earthengine-api
   - eccodes>=2.24.2
+  - eodatasets3
   - fiona
+  - flake8
   - folium
   - fsspec
   - gcsfs
+  - geodatasets
   - geojson
   - geopandas>=0.11.0
   - geoviews
+  - geoviews-core
+  - geoviews-core
+  - google-cloud-storage
+  - h3
   - h5netcdf
   - h5py
   - h5py
   - holoviews
   - hvplot
+  - imbalanced-learn
   - intake
   - intake-esm
   - intake-geopandas
+  - intake-stac
   - intake-xarray
   - isort
+  - jsonschema
+  - jupyter-ui-poll
+  - lmdb
+  - lxml
   - mapclassify
   - matplotlib
+  - matplotlib-base
+  - mypy
+  - netcdf4
+  - numcodecs
+  - numexpr
   - numpy
+  - odc-algo
+  - odc-geo
+  - odc-stac
   - opencv
   - pandas
   - panel
+  - param
+  - pims
   - planetary-computer
   - pooch
+  - pre-commit
   - pyarrow
-  - pydantic
+  - pydantic<2.0 # until lightning can be upgraded
   - pyogrio
+  - pyrsistent
+  - pystac
+  - pytest
+  - pytest-cov
   - python-dotenv
+  - python-graphviz
+  - python-rapidjson
   - pytorch
-  - pytorch-lightning
+  - lightning<2.0.9 # until https://github.com/Lightning-AI/lightning/issues/18565 is resolved
+  - pyyaml
   - rasterio
   - rioxarray
+  - ruff
   - s3fs
   - scikit-image
   - scikit-learn
   - scipy
   - seaborn
+  - slicerator
   - spatialpandas
   - stac-geoparquet
   - stac-vrt
   - stackstac
-  - torchgeo
+  - stactools
+  - structlog
+  - tabulate
+  - timm # note that torchgeo forces downgrade to 0.6.12 which breaks when using conda channel
   - torchvision
   - tqdm
   - wandb
-  - zarr
-  - pystac
-  - pytest
-  - pytest-cov
   - xarray
-  - geoviews-core
+  - xgboost
+  - xvec
+  - zarr
+  - zstandard

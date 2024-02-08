@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.*
+  - python=3.12
   - pip>=20
   - ipykernel
   - ipywidgets #  ipywidgets here and jupyterlab_widgets in jupyterlab env
@@ -71,7 +71,6 @@ dependencies:
   - mapclassify
   - matplotlib
   - matplotlib-base
-  - mercantile
   - mypy
   - netcdf4
   - numcodecs
@@ -120,7 +119,6 @@ dependencies:
   - structlog
   - tabulate
   - timm>=0.9
-  - toml
   - torchgeo
   - torchvision
   - tqdm

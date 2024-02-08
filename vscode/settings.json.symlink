@@ -3,14 +3,15 @@
     "telemetry.telemetryLevel": "off",
     "window.restoreFullscreen": true,
     "workbench.colorTheme": "Atom One Dark",
-    "files.autoSave": "onWindowChange",
+    "files.autoSave": "onFocusChange",
     "workbench.startupEditor": "none",
     "editor.minimap.enabled": false,
     "editor.largeFileOptimizations": false,
     "editor.inlineSuggest.enabled": true,
     "git.autofetch": true,
     "git.confirmSync": false,
-    // Editor and Terminal
+    // Editor Common Settings
+    "editor.formatOnSave": true,
     "editor.fontFamily": "Hack Nerd Font Mono",
     "editor.fontSize": 13,
     "editor.insertSpaces": true,
@@ -18,14 +19,11 @@
         88,
         100
     ],
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-        "source.organizeImports": true
-    },
+    // Terminal Settings
     "terminal.integrated.defaultProfile.osx": "zsh",
     "terminal.integrated.gpuAcceleration": "canvas",
     "terminal.integrated.fontSize": 11,
-    // Vim Settings
+    // Vim settings
     "vim.easymotion": true,
     "vim.incsearch": true,
     "vim.useSystemClipboard": true,
@@ -68,22 +66,46 @@
             ]
         }
     ],
-    // Python & Jupyter Settings
+    // Ruff settings
+    "ruff.enable": true,
+    "ruff.path": [],
+    "ruff.organizeImports": true,
+    "ruff.importStrategy": "fromEnvironment",
+    "ruff.codeAction.fixViolation": {
+        "enable": true
+    },
+    "ruff.codeAction.disableRuleComment": {
+        "enable": true
+    },
+    // Python Language Server
     "python.languageServer": "Pylance",
-    "python.defaultInterpreterPath": "/Users/calkoen/mambaforge/envs/testenv/bin/python",
+    // Python analysis settings
     "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingModuleSource": "none",
+        "reportGeneralTypeIssues": "warning",
+        "reportPrivateImportUsage": "none"
+    },
+    "python.analysis.useLibraryCodeForTypes": false,
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.autoSearchPaths": true,
+    "python.analysis.indexing": true,
+    "python.analysis.userFileIndexingLimit": 2000,
+    "python.analysis.autoImportCompletions": false,
+    "python.analysis.importFormat": "absolute",
+    "python.analysis.completeFunctionParens": false,
+    "python.analysis.enablePytestSupport": true,
+    "python.analysis.autoFormatStrings": false,
+    // Python inlay hints settings
+    "python.analysis.inlayHints.variableTypes": false,
+    "python.analysis.inlayHints.functionReturnTypes": false,
+    "python.analysis.inlayHints.callArgumentNames": false,
+    "python.analysis.inlayHints.pytestParameters": false,
+    // Python Formatting Settings
     "black-formatter.args": [
         "--experimental-string-processing"
     ],
-    "isort.args": [
-        "--profile",
-        "black"
-    ],
-    "jupyter.askForKernelRestart": false,
-    "jupyter.widgetScriptSources": [
-        "jsdelivr.com",
-        "unpkg.com"
-    ],
+    // Auto Docstring Settings
     "autoDocstring.docstringFormat": "google",
     "autoDocstring.generateDocstringOnEnter": true,
     // File Type Specific Settings
@@ -101,13 +123,11 @@
         "editor.defaultFormatter": "vscode.css-language-features"
     },
     "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter",
-        "editor.formatOnSave": true,
-        "editor.formatOnType": true,
         "editor.codeActionsOnSave": {
-            "source.fixAll": true,
-            "source.organizeImports": true
-        }
+            "source.organizeImports": "explicit",
+            "source.fixAll": "explicit"
+        },
+        "editor.defaultFormatter": "ms-python.black-formatter"
     },
     "[markdown]": {
         "editor.wordWrap": "on",
@@ -128,6 +148,12 @@
     "[dockerfile]": {
         "editor.defaultFormatter": "ms-azuretools.vscode-docker"
     },
+    // Jupyter Settings
+    "jupyter.askForKernelRestart": false,
+    "jupyter.widgetScriptSources": [
+        "jsdelivr.com",
+        "unpkg.com"
+    ],
     // Latex Workshop Settings
     "latex-workshop.latexindent.path": "/opt/homebrew/bin/latexindent",
     "latex-workshop.view.pdf.viewer": "external",
@@ -309,9 +335,19 @@
             "env": {}
         }
     ],
-    // EasyCode Settings
-    // "easycode.model": "gpt-4",
-    // "easycode.useOwnApiKey": true,
-    // "easycode.openAI ApiKey": "",
-    // "easycode.userEmail": "",
+    // Excluded Files
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*.pyc": {
+            "when": "$(basename).py"
+        },
+        "**/__pycache__": true,
+        "**/.pytest_cache": true
+    },
+    "terminal.integrated.inheritEnv": false,
+    "window.zoomLevel": 1,
 }

@@ -1,9 +1,9 @@
-name: testenv
+name: torchgeo
 channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.*
+  - python<3.11 # torchgeo forces timm downgrade to 0.6.12, which does not work with python 3.11
   - pip>=20
   - ipykernel
   - ipywidgets #  ipywidgets here and jupyterlab_widgets in jupyterlab env
@@ -71,7 +71,6 @@ dependencies:
   - mapclassify
   - matplotlib
   - matplotlib-base
-  - mercantile
   - mypy
   - netcdf4
   - numcodecs
@@ -81,7 +80,6 @@ dependencies:
   - odc-geo
   - odc-stac
   - opencv
-  - openpyxl
   - pandas
   - panel
   - param
@@ -90,7 +88,7 @@ dependencies:
   - pooch
   - pre-commit
   - pyarrow
-  - pydantic
+  - pydantic<2.0 # until lightning can be upgraded
   - pyogrio
   - pyrsistent
   - pystac
@@ -100,8 +98,7 @@ dependencies:
   - python-graphviz
   - python-rapidjson
   - pytorch
-  - lightning=<2.0.9 # until https://github.com/Lightning-AI/lightning/issues/18565 resolved
-  - pytorch-lightning
+  - lightning<2.0.9 # until https://github.com/Lightning-AI/lightning/issues/18565 is resolved
   - pyyaml
   - rasterio
   - rioxarray
@@ -119,21 +116,14 @@ dependencies:
   - stactools
   - structlog
   - tabulate
-  - timm>=0.9
-  - toml
-  - torchgeo
+  - timm # note that torchgeo forces downgrade to 0.6.12 which breaks when using conda channel
   - torchvision
   - tqdm
   - wandb
   - xarray
-  - xarray-spatial
   - xgboost
   - xvec
   - zarr
   - zstandard
   - pip:
-      - antimeridian
-      - stactools-geoparquet-items
-      - odc-ui
-      - odc-stats
-      # - dea-tools  # keep here as a placeholder to remind dea-tools install by GH clone
+      - torchgeo>0.4

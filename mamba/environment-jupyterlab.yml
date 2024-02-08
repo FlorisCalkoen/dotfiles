@@ -2,22 +2,33 @@ name: lab
 channels:
   - conda-forge
   - defaults
+  - pyviz
 dependencies:
-  - python=3.*
+  - python=3.11
   - pip
+  - bandit
   - black
+  - bokeh
   - ca-certificates
   - certifi
+  - click
   - dask-labextension
+  - folium
+  - geoviews-core
   - gh-scoped-creds # check if useful
   - ghp-import
+  - holoviews
+  - hvplot
   - ipykernel
   - ipyleaflet
+  - ipympl
+  - ipywidgets
   - isort
+  - jupyter_bokeh
   - jupyter-book
   - jupyter-panel-proxy # not sure if this one is really useful
   - jupyter-resource-usage
-  - jupyterlab
+  - jupyterlab>=4
   - jupyterlab_code_formatter
   - jupyterlab_execute_time # breaks env on windows installation
   - jupyterlab_vim
@@ -25,14 +36,17 @@ dependencies:
   - jupyterlab-git
   - jupyterlab-lsp # breaks tab complete if python-lsp-server not installed
   - jupyterlab-spellchecker
-  - poetry
-  - pre_commit
+  - matplotlib-base
   - nb_conda_kernels
   - nbgitpuller
   - nbstripout
   - nodejs
   - openssl
   - panel
+  - param
+  - poetry
+  - pre_commit
+  - pydantic
   - python-lsp-server
   - pyviz_comms
   - voila

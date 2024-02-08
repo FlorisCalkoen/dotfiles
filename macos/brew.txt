@@ -1,6 +1,7 @@
 adns
 awscli
 azure-cli
+azcopy
 cmake
 docker
 docker-compose
@@ -31,3 +32,5 @@ unar
 pdftk-java
 speedtest-cli
 ffmpeg
+cookiecutter
+duckdb

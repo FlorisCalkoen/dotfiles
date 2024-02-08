@@ -17,4 +17,7 @@ zoom
 adobe-acrobat-reader
 clickshare
 microsoft-edge
-
+cask google-earth-pro
+slack
+ngrok
+soulseek

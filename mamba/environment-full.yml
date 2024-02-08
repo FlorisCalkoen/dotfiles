@@ -1,4 +1,4 @@
-name: coastal
+name: jl-full
 channels:
   - conda-forge
   - defaults
@@ -10,37 +10,47 @@ dependencies:
   - ca-certificates
   - certifi
   - openssl
+  - boltons
+  - ciso8601
+  - cattrs
 
     # Development Tools
-  - black
-  - isort
-  - click
   - bandit
-  - pydantic
-  - pre-commit
+  - black
+  - click
+  - codespell
+  - flake8
+  - isort
+  - mypy
   - poetry
-  - python-semantic-release 
+  - pre-commit
+  - pydantic
+  - pydantic
+  - pytest
+  - pytest-cov
+  - ruff
 
   # Jupyterlab and lab extensions/packages
-  - jupyterlab>=4
+  - dask-labextension # causes slow startup on windows
   - gh-scoped-creds # check if useful
   - ipykernel
+  - ipywidgets
   - jupyter-panel-proxy # not sure if this one is really useful
   - jupyter-resource-usage
   - jupyterlab_code_formatter
+  - jupyterlab_execute_time # breaks env on windows installation
+  - jupyterlab_vim # for vim users ^^
   - jupyterlab_widgets
+  - jupyterlab-git # causes warning when git not on os
   - jupyterlab-lsp # breaks tab complete if python-lsp-server not installed
   - jupyterlab-spellchecker
+  - jupyterlab>=4
   - nb_conda_kernels
   - nbgitpuller
   - nbstripout
   - nodejs
   - python-lsp-server
   - voila
-  # - jupyterlab_vim  # for vim users ^^
-  # - jupyterlab-git  # causes warning when git not on os
-  # - jupyterlab_execute_time # breaks env on windows installation
-  # - dask-labextension  # causes slow startup on windows
   # - lckr-jupyterlab-variableinspector  # doesn't work on my machine yet
 
   # Jupyterbook dev tools
@@ -50,8 +60,9 @@ dependencies:
   # interactive vizualization libraries
   - bokeh
   - folium
+  - geoviews
   - geoviews-core
-  - holoviews
+  - holoviews=<1.18 # until bug in stream xy is fixed
   - hvplot
   - ipyleaflet
   - ipympl
@@ -71,36 +82,56 @@ dependencies:
   - boto3
   - cartopy
   - cfgrib
+  - contextily
   - dask
   - dask-cloudprovider
   - dask-geopandas
+  - dask-image
+  - dask-ml
+  - dask-gateway
   - datacube
   - datashader
   - descartes
+  - distributed
   - earthengine-api
   - eccodes>=2.24.2
   - fiona
   - fsspec
   - gcsfs
+  - geodatasets
   - geojson
   - geopandas>=0.11.0
+  - google-cloud-storage
   - h5netcdf
   - h5py
+  - imbalanced-learn
   - intake
   - intake-esm
   - intake-geopandas
   - intake-stac
   - intake-xarray
+  - jsonschema
+  - lightning=<2.0.9
+  - lmdb
   - lxml
   - mapclassify
+  - mercantile
+  - netcdf4
   - numcodecs
   - numpy
+  - odc-algo
+  - odc-geo
+  - odc-stac
+  - openpyxl
   - pandas
+  - pims
   - planetary-computer
   - pooch
   - pyarrow=10 # check if higher versions still bring cudatoolkit
   - pyogrio
   - python-dotenv
+  - pytorch
+  - pyyaml
   - rasterio
   - rioxarray
   - s3fs
@@ -112,11 +143,24 @@ dependencies:
   - stac-geoparquet
   - stac-vrt
   - stackstac
-  - tqdm
+  - tabulate
+  - timm>=0.9
   - toml
+  - torchgeo
+  - torchvision
+  - tqdm
+  - wandb
+  - xarray
   - xarray-spatial
+  - xgboost
+  - xvec
   - zarr
+  - zstandard
 
   # This is when you want the CoastalCodeBook package to be installed in dev mode
-  # - pip:
-  #     - -e .
+  - pip:
+      # - -e .
+      - antimeridian
+    # - stactools-geoparquet-items
+    # - odc-ui
+    # - odc-stats
