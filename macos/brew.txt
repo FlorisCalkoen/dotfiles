@@ -36,3 +36,4 @@ cookiecutter
 duckdb
 docker-buildx
 pdm
+rye
