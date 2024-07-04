@@ -130,7 +130,6 @@ dependencies:
   - pyarrow=10 # check if higher versions still bring cudatoolkit
   - pyogrio
   - python-dotenv
-  - python-duckdb
   - pytorch
   - pyyaml
   - rasterio
@@ -162,6 +161,7 @@ dependencies:
   - pip:
       # - -e .
       - antimeridian
+      -  duckdb
     # - stactools-geoparquet-items
     # - odc-ui
     # - odc-stats

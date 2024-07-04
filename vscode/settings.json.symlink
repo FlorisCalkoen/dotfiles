@@ -77,6 +77,10 @@
     "ruff.codeAction.disableRuleComment": {
         "enable": true
     },
+    "ruff.lint.args": [
+        "--config=pyproject.toml"
+    ],
+    "ruff.fixAll": true,
     // Python Language Server
     "python.languageServer": "Pylance",
     // Python analysis settings
@@ -103,7 +107,9 @@
     "python.analysis.inlayHints.pytestParameters": false,
     // Python Formatting Settings
     "black-formatter.args": [
-        "--experimental-string-processing"
+        "--experimental-string-processing",
+        "--line-length",
+        "88"
     ],
     // Auto Docstring Settings
     "autoDocstring.docstringFormat": "google",
@@ -123,11 +129,13 @@
         "editor.defaultFormatter": "vscode.css-language-features"
     },
     "[python]": {
+        "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
-            "source.organizeImports": "explicit",
-            "source.fixAll": "explicit"
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
         },
-        "editor.defaultFormatter": "ms-python.black-formatter"
+        "editor.defaultFormatter": "charliermarsh.ruff"
+        // "editor.defaultFormatter": "ms-python.black-formatter",
     },
     "[markdown]": {
         "editor.wordWrap": "on",
@@ -350,4 +358,13 @@
     },
     "terminal.integrated.inheritEnv": false,
     "window.zoomLevel": 1,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "github.copilot.advanced": {},
+    "github.copilot.editor.enableAutoCompletions": true,
+    "githubPullRequests.createOnPublishBranch": "never",
 }

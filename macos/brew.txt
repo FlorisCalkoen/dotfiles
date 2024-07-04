@@ -34,3 +34,5 @@ speedtest-cli
 ffmpeg
 cookiecutter
 duckdb
+docker-buildx
+pdm
