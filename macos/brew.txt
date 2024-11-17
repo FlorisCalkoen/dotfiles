@@ -37,3 +37,4 @@ duckdb
 docker-buildx
 pdm
 rye
+hatch

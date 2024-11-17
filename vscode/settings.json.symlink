@@ -134,7 +134,8 @@
             "source.fixAll": "explicit",
             "source.organizeImports": "explicit"
         },
-        "editor.defaultFormatter": "charliermarsh.ruff"
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "diffEditor.ignoreTrimWhitespace": true
         // "editor.defaultFormatter": "ms-python.black-formatter",
     },
     "[markdown]": {
@@ -367,4 +368,5 @@
     "github.copilot.advanced": {},
     "github.copilot.editor.enableAutoCompletions": true,
     "githubPullRequests.createOnPublishBranch": "never",
+    "githubPullRequests.pullBranch": "never",
 }

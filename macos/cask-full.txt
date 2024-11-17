@@ -21,3 +21,4 @@ cask google-earth-pro
 slack
 ngrok
 soulseek
+proton-drive
