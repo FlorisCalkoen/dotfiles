@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+# cleanup -- reclaim disk space from common caches and temp files.
+# Usage: cleanup [--dry-run]
+
+set -e
+
+DRY_RUN=false
+[ "${1}" = "--dry-run" ] && DRY_RUN=true
+
+freed=0
+
+clean() {
+    local label="$1" path="$2"
+    if [ -d "$path" ] || [ -f "$path" ]; then
+        size=$(du -sm "$path" 2>/dev/null | awk '{print $1}')
+        if [ "$DRY_RUN" = true ]; then
+            echo "[dry-run] $label: ${size}MB"
+        else
+            rm -rf "$path"
+            echo "Cleaned $label: ${size}MB"
+        fi
+        freed=$((freed + size))
+    fi
+}
+
+echo "Cleaning up..."
+echo ""
+
+# macOS caches
+clean "User cache"          "$HOME/Library/Caches"
+clean "User logs"           "$HOME/Library/Logs"
+
+# Homebrew
+if command -v brew &>/dev/null; then
+    if [ "$DRY_RUN" = false ]; then
+        echo "Homebrew cleanup..."
+        brew cleanup --prune=all -s 2>/dev/null
+        brew autoremove 2>/dev/null
+    else
+        echo "[dry-run] Homebrew cleanup (run 'brew cleanup --prune=all -s' manually)"
+    fi
+fi
+
+# Python / uv
+clean "uv cache"            "$HOME/.cache/uv"
+clean "pip cache"           "$HOME/Library/Caches/pip"
+clean "pip cache (alt)"     "$HOME/.cache/pip"
+
+# conda
+clean "conda pkgs"          "$HOME/miniforge3/pkgs"
+clean "conda cache"         "$HOME/.conda"
+
+# npm / node (if present)
+clean "npm cache"           "$HOME/.npm/_cacache"
+
+# Xcode (if present)
+clean "Xcode DerivedData"   "$HOME/Library/Developer/Xcode/DerivedData"
+
+# Trash
+clean "Trash"               "$HOME/.Trash"
+
+# .DS_Store files
+if [ "$DRY_RUN" = false ]; then
+    count=$(find "$HOME" -name '.DS_Store' -maxdepth 5 2>/dev/null | wc -l | tr -d ' ')
+    find "$HOME" -name '.DS_Store' -maxdepth 5 -delete 2>/dev/null
+    echo "Removed $count .DS_Store files"
+else
+    count=$(find "$HOME" -name '.DS_Store' -maxdepth 5 2>/dev/null | wc -l | tr -d ' ')
+    echo "[dry-run] $count .DS_Store files"
+fi
+
+echo ""
+echo "Total reclaimable: ~${freed}MB"
+[ "$DRY_RUN" = true ] && echo "Run without --dry-run to actually clean."

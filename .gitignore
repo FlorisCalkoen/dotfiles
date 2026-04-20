@@ -1,0 +1,7 @@
+# Machine-specific overrides — never committed
+local/*.zsh
+
+# Git local config (contains name/email)
+git/gitconfig.local.symlink
+
+.DS_Store

@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# sysinfo -- print a quick system overview.
+# Usage: sysinfo
+
+printf "%-16s %s\n" "Host"     "$(scutil --get ComputerName 2>/dev/null || hostname)"
+printf "%-16s %s\n" "macOS"    "$(sw_vers -productVersion) ($(sw_vers -buildVersion))"
+printf "%-16s %s\n" "Chip"     "$(sysctl -n machdep.cpu.brand_string)"
+printf "%-16s %s\n" "Memory"   "$(sysctl -n hw.memsize | awk '{printf "%.0f GB", $1/1073741824}')"
+printf "%-16s %s\n" "Uptime"   "$(uptime | sed 's/.*up //' | sed 's/,.*//')"
+printf "%-16s %s\n" "Shell"    "$SHELL ($($SHELL --version 2>&1 | head -1))"
+printf "%-16s %s\n" "Disk"     "$(df -h / | awk 'NR==2 {print $4 " free of " $2}')"
+
+echo ""
+
+# Network
+active=$(route get default 2>/dev/null | awk '/interface:/{print $2}')
+if [ -n "$active" ]; then
+    ip=$(ipconfig getifaddr "$active" 2>/dev/null || echo "no IP")
+    printf "%-16s %s (%s)\n" "Network" "$active" "$ip"
+fi
+ext_ip=$(curl -s --max-time 3 https://ifconfig.me || echo "unavailable")
+printf "%-16s %s\n" "External IP"  "$ext_ip"

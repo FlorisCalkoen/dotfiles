@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# brewup -- update all Homebrew-managed packages.
+# Usage: brewup [--dry-run]
+
+set -e
+
+if [ "${1}" = "--dry-run" ]; then
+    brew update
+    echo ""
+    echo "Outdated formulae:"
+    brew outdated --formula
+    echo ""
+    echo "Outdated casks:"
+    brew outdated --cask
+    echo ""
+    echo "Not in Brewfile:"
+    brew bundle cleanup --file="$HOME/.dotfiles/Brewfile" 2>/dev/null || true
+    exit 0
+fi
+
+echo "Updating Homebrew..."
+brew update
+
+echo ""
+echo "Upgrading formulae and casks..."
+brew upgrade
+
+echo ""
+echo "Cleaning up old versions..."
+brew cleanup --prune=all -s
+brew autoremove
+
+echo ""
+echo "Checking Brewfile drift..."
+brew bundle cleanup --file="$HOME/.dotfiles/Brewfile" 2>/dev/null || true
+
+echo ""
+echo "Done."
+brew info --json=v2 --installed 2>/dev/null | jq '[.formulae[], .casks[]] | length' 2>/dev/null | xargs -I{} echo "{} packages installed."

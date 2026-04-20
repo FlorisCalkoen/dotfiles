@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# xlsxcopy -- extract all sheets from an XLSX file and copy as Markdown to clipboard.
+# Usage: xlsxcopy <file.xlsx>
+
+set -e
+
+if [ -z "$1" ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+    echo "Usage: xlsxcopy <file.xlsx>"
+    echo "Extracts all sheets from an XLSX file and copies them as Markdown tables to the clipboard."
+    exit 0
+fi
+
+if [ ! -f "$1" ]; then
+    echo "Error: file not found: $1" >&2
+    exit 1
+fi
+
+python3 - "$1" <<'EOF' | pbcopy
+import sys
+import pandas as pd
+from tabulate import tabulate
+
+file = sys.argv[1]
+excel = pd.ExcelFile(file)
+for sheet in excel.sheet_names:
+    print(f"## Sheet: {sheet}\n")
+    df = pd.read_excel(excel, sheet)
+    if df.empty:
+        print("_(Empty sheet)_\n")
+    else:
+        print(tabulate(df, headers='keys', tablefmt='github', showindex=False))
+        print()
+EOF
+
+chars=$(pbpaste | wc -c | tr -d ' ')
+echo "Copied contents of $(basename "$1") to clipboard as Markdown ($chars characters)."

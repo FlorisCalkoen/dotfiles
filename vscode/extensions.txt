@@ -1,0 +1,28 @@
+# Python
+ms-python.python
+ms-python.vscode-pylance
+charliermarsh.ruff
+njpwerner.autodocstring
+
+# Jupyter
+ms-toolsai.jupyter
+ms-toolsai.jupyter-keymap
+ms-toolsai.jupyter-renderers
+
+# Git
+eamodio.gitlens
+
+# AI
+GitHub.copilot
+GitHub.copilot-chat
+
+# Editor
+vscodevim.vim
+esbenp.prettier-vscode
+foxundermoon.shell-format
+stkb.rewrap
+yzhang.markdown-all-in-one
+
+# LaTeX
+James-Yu.latex-workshop
+valentjn.vscode-ltex

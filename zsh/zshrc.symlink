@@ -1,0 +1,54 @@
+# Dotfiles root
+export ZSH=$HOME/.dotfiles
+
+# ── Auto-load all *.zsh files from topic folders ────────────────────────────
+# Loading order: path.zsh first → everything else → completion.zsh last
+
+typeset -U config_files
+config_files=($ZSH/**/*.zsh)
+
+# 1. Load path files first (PATH setup)
+for file in ${(M)config_files:#*/path.zsh}; do
+  source "$file"
+done
+
+# 2. Load everything except path.zsh and completion.zsh
+for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}; do
+  source "$file"
+done
+
+# 3. Set up completions
+autoload -Uz compinit
+compinit
+
+# 4. Load completion files last
+for file in ${(M)config_files:#*/completion.zsh}; do
+  source "$file"
+done
+
+unset config_files
+
+# ── Local overrides (not tracked by git) ────────────────────────────────────
+for file in $ZSH/local/*.zsh(N); do
+  source "$file"
+done
+
+# ── Plugins (installed via Homebrew) ────────────────────────────────────────
+if command -v brew &>/dev/null; then
+  _brew_prefix="$(brew --prefix)"
+  [[ -f "$_brew_prefix/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] && \
+    source "$_brew_prefix/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  [[ -f "$_brew_prefix/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] && \
+    source "$_brew_prefix/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  unset _brew_prefix
+fi
+
+# ── Prompt ──────────────────────────────────────────────────────────────────
+if command -v starship &>/dev/null; then
+  eval "$(starship init zsh)"
+fi
+
+# -- fzf keybindings and completion (installed via Homebrew)
+if command -v fzf &>/dev/null; then
+  eval "$(fzf --zsh)"
+fi

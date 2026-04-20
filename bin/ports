@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# ports -- show processes listening on TCP ports.
+# Usage: ports [port_number]
+
+if [ -n "$1" ]; then
+    lsof -iTCP:"$1" -sTCP:LISTEN -P -n 2>/dev/null
+else
+    lsof -iTCP -sTCP:LISTEN -P -n 2>/dev/null | awk 'NR==1 || /LISTEN/'
+fi

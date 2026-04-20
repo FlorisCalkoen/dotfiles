@@ -1,0 +1,3 @@
+#!/bin/bash
+# Clear outputs from Jupyter notebooks
+jupyter nbconvert --clear-output --inplace "$@"

@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# pdfcopy -- extract text from a PDF and copy it to the clipboard.
+# Usage: pdfcopy <file.pdf>
+
+set -e
+
+if [ -z "$1" ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+    echo "Usage: pdfcopy <file.pdf>"
+    echo "Extracts all text from a PDF and copies it to the clipboard."
+    exit 0
+fi
+
+if [ ! -f "$1" ]; then
+    echo "Error: file not found: $1" >&2
+    exit 1
+fi
+
+if ! command -v pdftotext >/dev/null 2>&1; then
+    echo "Error: pdftotext not found. Install it with: brew install poppler" >&2
+    exit 1
+fi
+
+pdftotext -layout "$1" - | pbcopy
+
+chars=$(pbpaste | wc -c | tr -d ' ')
+echo "Copied $chars characters from $(basename "$1") to clipboard."

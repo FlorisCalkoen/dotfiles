@@ -1,0 +1,19 @@
+[include]
+    path = ~/.gitconfig.local
+[color]
+    ui = true
+[core]
+    excludesfile = ~/.gitignore
+    editor = vim
+[init]
+    defaultBranch = main
+[push]
+    default = simple
+[pull]
+    rebase = true
+[credential "https://github.com"]
+    helper =
+    helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+    helper =
+    helper = !/opt/homebrew/bin/gh auth git-credential

@@ -1,0 +1,2 @@
+# Initialize Homebrew (must be in zprofile so PATH is set for all shells)
+eval "$(/opt/homebrew/bin/brew shellenv)"
