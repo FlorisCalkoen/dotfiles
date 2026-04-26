@@ -8,13 +8,16 @@
 # Most changes take effect immediately. Some require logout/restart.
 # Review before running — every line is intentional.
 
-set -e
+set -euo pipefail
 
 # Close System Settings to prevent it from overriding changes
 osascript -e 'tell application "System Settings" to quit' 2>/dev/null || true
 
 # Ask for sudo upfront (needed for a handful of settings)
 sudo -v
+
+# This prevents the script from failing halfway through because sudo timed out.
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # ─── General UI/UX ──────────────────────────────────────────────────────────
 
@@ -38,20 +41,14 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 # Auto-quit printer app when jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
-# Disable the "Are you sure you want to open this application?" quarantine dialog
-defaults write com.apple.LaunchServices LSQuarantine -bool false
+# Disable/enable the "Are you sure you want to open this application?" quarantine dialog
+defaults write com.apple.LaunchServices LSQuarantine -bool true
 
 # # Disable the crash reporter dialog
 defaults write com.apple.CrashReporter DialogType -string "none"
 
-# # Disable Notification Center and remove the menu bar icon (requires restart)
-# # launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2>/dev/null
-
 # # Set highlight color (Green)
-# defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
-
-# # Disable the sound on boot (bong)
-# sudo nvram SystemAudioVolume=" "
+defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
 
 # # Disable window animations and Get Info animations
 defaults write com.apple.finder DisableAllAnimations -bool true
@@ -98,13 +95,6 @@ defaults write com.apple.HIToolbox AppleFnUsageType -int 0
 sudo defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
 sudo defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 sudo defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
-
-# # Reduce motion (less fancy transitions, lighter on resources)
-# defaults write com.apple.universalaccess reduceMotion -bool true
-
-# # Reduce transparency (slightly better performance, less visual noise)
-# defaults write com.apple.universalaccess reduceTransparency -bool true
-
 
 # ─── Locale ─────────────────────────────────────────────────────────────────
 
@@ -178,9 +168,11 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 # Skip disk image verification (faster mount)
-defaults write com.apple.frameworks.diskimages skip-verify -bool true
-defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
-defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+# Revised 2026-04-26: This is a speed optimization from older dotfile templates,
+# but it weakens safety around downloaded .dmg files. So now set to false.
+defaults write com.apple.frameworks.diskimages skip-verify -bool false
+defaults write com.apple.frameworks.diskimages skip-verify-locked -bool false
+defaults write com.apple.frameworks.diskimages skip-verify-remote -bool false
 
 # Auto-open Finder when a volume is mounted
 defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
@@ -304,47 +296,11 @@ sudo pmset -a displaysleep 5
 sudo pmset -b sleep 10
 sudo pmset -c sleep 0
 
+# Keep disks awake on charger during long sync/backup/import jobs
+sudo pmset -c disksleep 0
+
 # # ---- Safari (developer settings) -----------------------------------------------
-
-# # Privacy: don't send search queries to Apple
-# defaults write com.apple.Safari UniversalSearchEnabled -bool false
-# defaults write com.apple.Safari SuppressSearchSuggestions -bool true
-
-# # Show the full URL in the address bar (not just the domain)
-# defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
-
-# # Set Safari home page to about:blank
-# defaults write com.apple.Safari HomePage -string "about:blank"
-
-# # Don't open "safe" files after downloading
-# defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
-
-# # # Show the Develop menu and Web Inspector
-# # defaults write com.apple.Safari IncludeDevelopMenu -bool true
-# # defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-# # defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
-
-# # # Enable the Web Inspector in all web views (context menu)
-# # defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
-
-# # Disable Safari auto-fill
-# defaults write com.apple.Safari AutoFillFromAddressBook -bool false
-# defaults write com.apple.Safari AutoFillPasswords -bool true
-# defaults write com.apple.Safari AutoFillCreditCardData -bool false
-# defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
-
-# # Warn about fraudulent websites
-# defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true
-
-# # Block pop-up windows
-# defaults write com.apple.Safari WebKitJavaScriptCanOpenWindowsAutomatically -bool false
-# defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically -bool false
-
-# # Enable Do Not Track header
-# defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
-
-# # Update extensions automatically
-# defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
+# Safari is managed via my ICloud account, so these settings are disabled to prevent conflicts and sync issues.
 
 # # ---- Terminal.app ---------------------------------------------------------------
 
@@ -364,33 +320,36 @@ defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 
 # # ---- Spotlight ------------------------------------------------------------------
 
-# Disable Spotlight indexing for mounted volumes
-sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes" 2>/dev/null || true
+# Local-first, low-noise Spotlight.
+# Keep: apps, settings, folders, PDFs, documents, contacts, source files.
+# Hide: media, messages, bookmarks, web/search suggestions, fonts, misc menus.
 
-# Change indexing order and disable some search results
 defaults write com.apple.spotlight orderedItems -array \
-    '{"enabled" = 1;"name" = "APPLICATIONS";}' \
-    '{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
-    '{"enabled" = 1;"name" = "DIRECTORIES";}' \
-    '{"enabled" = 1;"name" = "PDF";}' \
-    '{"enabled" = 0;"name" = "FONTS";}' \
-    '{"enabled" = 1;"name" = "DOCUMENTS";}' \
-    '{"enabled" = 0;"name" = "MESSAGES";}' \
-    '{"enabled" = 1;"name" = "CONTACT";}' \
-    '{"enabled" = 0;"name" = "EVENT_TODO";}' \
-    '{"enabled" = 0;"name" = "IMAGES";}' \
-    '{"enabled" = 0;"name" = "BOOKMARKS";}' \
-    '{"enabled" = 0;"name" = "MUSIC";}' \
-    '{"enabled" = 0;"name" = "MOVIES";}' \
-    '{"enabled" = 0;"name" = "PRESENTATIONS";}' \
-    '{"enabled" = 0;"name" = "SPREADSHEETS";}' \
-    '{"enabled" = 1;"name" = "SOURCE";}' \
-    '{"enabled" = 0;"name" = "MENU_DEFINITION";}' \
-    '{"enabled" = 0;"name" = "MENU_OTHER";}' \
-    '{"enabled" = 0;"name" = "MENU_CONVERSION";}' \
-    '{"enabled" = 0;"name" = "MENU_EXPRESSION";}' \
-    '{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
-    '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
+    '{"enabled" = 1; "name" = "APPLICATIONS";}' \
+    '{"enabled" = 1; "name" = "SYSTEM_PREFS";}' \
+    '{"enabled" = 1; "name" = "DIRECTORIES";}' \
+    '{"enabled" = 1; "name" = "PDF";}' \
+    '{"enabled" = 0; "name" = "FONTS";}' \
+    '{"enabled" = 1; "name" = "DOCUMENTS";}' \
+    '{"enabled" = 0; "name" = "MESSAGES";}' \
+    '{"enabled" = 1; "name" = "CONTACT";}' \
+    '{"enabled" = 0; "name" = "EVENT_TODO";}' \
+    '{"enabled" = 0; "name" = "IMAGES";}' \
+    '{"enabled" = 0; "name" = "BOOKMARKS";}' \
+    '{"enabled" = 0; "name" = "MUSIC";}' \
+    '{"enabled" = 0; "name" = "MOVIES";}' \
+    '{"enabled" = 0; "name" = "PRESENTATIONS";}' \
+    '{"enabled" = 0; "name" = "SPREADSHEETS";}' \
+    '{"enabled" = 1; "name" = "SOURCE";}' \
+    '{"enabled" = 0; "name" = "MENU_DEFINITION";}' \
+    '{"enabled" = 0; "name" = "MENU_OTHER";}' \
+    '{"enabled" = 0; "name" = "MENU_CONVERSION";}' \
+    '{"enabled" = 0; "name" = "MENU_EXPRESSION";}' \
+    '{"enabled" = 0; "name" = "MENU_WEBSEARCH";}' \
+    '{"enabled" = 0; "name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
+
+killall Spotlight 2>/dev/null || true
+killall SystemUIServer 2>/dev/null || true
 
 # Reload Spotlight to pick up the changes
 # killall mds > /dev/null 2>&1
@@ -412,11 +371,6 @@ defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 
 # Turn on app auto-update
 defaults write com.apple.commerce AutoUpdate -bool true
-
-# # ---- Bluetooth ------------------------------------------------------------------
-
-# # Increase Bluetooth audio quality (AAC/aptX)
-# defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
 # # ---- Trackpad ------------------------------------------------------------------
 
