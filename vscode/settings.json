@@ -118,8 +118,6 @@
     "editor.suggestSelection": "recentlyUsedByPrefix",
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "files.trimTrailingWhitespace": false,
-    "rewrap.wrappingColumn": 89,
-    "rewrap.autoWrap.enabled": true
   },
   "[shellscript]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
@@ -134,11 +132,11 @@
     "editor.suggestSelection": "recentlyUsedByPrefix",
     "rewrap.wrappingColumn": 88
   },
-  "latex-workshop.latexindent.path": "/opt/homebrew/bin/latexindent",
+  "latex-workshop.formatting.latexindent.path": "/opt/homebrew/bin/latexindent",
   "latex-workshop.latex.autoBuild.run": "onSave",
   "latex-workshop.latex.recipe.default": "lastUsed",
   "latex-workshop.intellisense.package.enabled": false,
-  "latex-workshop.message.badbox.show": false,
+  "latex-workshop.message.badbox.show": "none",
   "latex-workshop.view.pdf.viewer": "external",
   "latex-workshop.view.pdf.external.viewer.command": "/Applications/Skim.app/Contents/SharedSupport/displayline",
   "latex-workshop.view.pdf.external.viewer.args": [

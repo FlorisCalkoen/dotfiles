@@ -1,0 +1,107 @@
+#!/usr/bin/env bash
+# zoterobackup -- backup Zotero database and linked attachments to Proton Drive.
+# Usage:
+#   zoterobackup
+#   zoterobackup --dry-run
+#
+# Assumes:
+#   Zotero database:      ~/Zotero
+#   Zotero attachments:  ~/ZoteroAttachments
+#   Backup destination:  ~/protondrive/90_archive/zotero-backup
+
+set -euo pipefail
+
+DRY_RUN=0
+
+if [ "${1:-}" = "--dry-run" ]; then
+    DRY_RUN=1
+elif [ "${1:-}" != "" ]; then
+    echo "Usage: zoterobackup [--dry-run]" >&2
+    exit 1
+fi
+
+DATE="$(date +%F)"
+
+ZOTERO_DIR="$HOME/Zotero"
+ATTACHMENTS_DIR="$HOME/ZoteroAttachments"
+PROTON_BASE="$HOME/protondrive"
+ARCHIVE_DIR="$PROTON_BASE/90_archive"
+DEST_DIR="$ARCHIVE_DIR/zotero-backup"
+
+RSYNC_FLAGS=(
+    -a
+    -h
+    --info=progress2
+    --exclude='.DS_Store'
+    --exclude='*.tmp'
+    --exclude='*.part'
+)
+
+if [ "$DRY_RUN" -eq 1 ]; then
+    RSYNC_FLAGS+=(--dry-run)
+    echo "Dry run: no files will be copied."
+    echo ""
+fi
+
+if [ ! -d "$ZOTERO_DIR" ]; then
+    echo "Error: Zotero directory not found: $ZOTERO_DIR" >&2
+    exit 1
+fi
+
+if [ ! -d "$ATTACHMENTS_DIR" ]; then
+    echo "Error: Zotero attachments directory not found: $ATTACHMENTS_DIR" >&2
+    exit 1
+fi
+
+if [ ! -d "$PROTON_BASE" ]; then
+    echo "Error: Proton Drive base directory not found: $PROTON_BASE" >&2
+    exit 1
+fi
+
+mkdir -p "$DEST_DIR"
+
+echo "Backing up Zotero..."
+echo "Source:      $ZOTERO_DIR"
+echo "Destination: $DEST_DIR/Zotero"
+echo ""
+
+rsync "${RSYNC_FLAGS[@]}" "$ZOTERO_DIR/" "$DEST_DIR/Zotero/"
+
+echo ""
+echo "Backing up Zotero attachments..."
+echo "Source:      $ATTACHMENTS_DIR"
+echo "Destination: $DEST_DIR/ZoteroAttachments"
+echo ""
+
+rsync "${RSYNC_FLAGS[@]}" "$ATTACHMENTS_DIR/" "$DEST_DIR/ZoteroAttachments/"
+
+echo ""
+echo "Writing backup manifest..."
+
+if [ "$DRY_RUN" -eq 0 ]; then
+    cat > "$DEST_DIR/README.txt" <<EOF
+Zotero backup
+=============
+
+Created: $(date)
+Host: $(hostname)
+
+Sources:
+- Zotero database: $ZOTERO_DIR
+- Zotero linked attachments: $ATTACHMENTS_DIR
+
+Restore idea:
+1. Copy Zotero/ back to ~/Zotero
+2. Copy ZoteroAttachments/ back to ~/ZoteroAttachments
+3. In Zotero, set Linked Attachment Base Directory to ~/ZoteroAttachments
+
+Notes:
+- This backup was created with rsync.
+- Zotero should ideally be closed during backup for maximum consistency.
+EOF
+fi
+
+echo ""
+echo "Done."
+echo "Backup location:"
+echo "$DEST_DIR"
