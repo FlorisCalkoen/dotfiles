@@ -22,6 +22,7 @@ brew 'jq'                        # JSON processor
 brew 'ripgrep'                   # fast grep alternative (rg)
 brew 'shellcheck'                # shell script linter
 brew 'shfmt'                     # shell script formatter
+brew 'hugo'
 
 # ── Python ───────────────────────────────────────────────────────────────────
 brew 'uv'                        # Python package/project manager (replaces pip, rye, pdm)
@@ -36,6 +37,7 @@ brew 'graphviz'                  # graph/diagram rendering
 brew 'pandoc'                    # document conversion (markdown, LaTeX, docx, etc.)
 brew 'imagemagick'
 brew 'ffmpeg'                    # video/audio processing
+brew 'qrencode'                  # QR code generator
 
 # ── Cloud ────────────────────────────────────────────────────────────────────
 brew 'awscli'                    # AWS (S3, cloud-native geospatial data)
@@ -57,6 +59,7 @@ cask 'skim'                      # PDF viewer (LaTeX synctex support)
 cask 'miniforge'                 # conda for geospatial Python envs (GDAL, rasterio)
 cask 'qbittorrent'
 cask 'vlc'
+cask 'qgis'
 
 # ── Proton Suite ─────────────────────────────────────────────────────────────
 cask 'proton-mail'
