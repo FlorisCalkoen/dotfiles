@@ -66,6 +66,7 @@ cask 'proton-mail'
 cask 'proton-drive'
 cask 'proton-pass'
 cask 'protonvpn'
+cask 'proton-meet'
 
 # ── Communication ────────────────────────────────────────────────────────────
 cask 'slack'
